@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.7
 
 RUN mkdir -p /app
 ENV PROJECT_ROOT /app
@@ -11,4 +11,6 @@ RUN pip install -r requirements.txt
 
 EXPOSE $SERVING_PORT
 
+# RUN jupyter nbextension enable
+RUN jupyter contrib nbextension install --user
 CMD jupyter notebook --ip='0.0.0.0' --port=${SERVING_PORT} --no-browser --allow-root --notebook-dir=/app
